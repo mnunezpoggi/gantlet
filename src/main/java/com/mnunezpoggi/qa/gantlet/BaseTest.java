@@ -43,7 +43,6 @@ public abstract class BaseTest extends Assertions implements OnPageChange {
 
     public abstract String getSourcesPackage();
     
-    public abstract String getWebServicesPackage();
     /*
         For removing logging (cosmetic thing)
      */

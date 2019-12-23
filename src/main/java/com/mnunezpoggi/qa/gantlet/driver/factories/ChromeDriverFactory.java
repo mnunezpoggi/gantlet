@@ -26,7 +26,9 @@ public class ChromeDriverFactory extends DriverFactory {
             + "}";
      
     public ChromeDriverFactory() {
-        System.setProperty("webdriver.chrome.driver", USER_DIR + SEPARATOR + DRIVER_DIR + PLATFORM + SEPARATOR + DRIVER_NAME);
+        if(DRIVER_DIR != null && !DRIVER_DIR.isEmpty()){
+            System.setProperty("webdriver.chrome.driver", USER_DIR + SEPARATOR + DRIVER_DIR + PLATFORM + SEPARATOR + DRIVER_NAME);
+        }
         System.setProperty("webdriver.chrome.silentOutput", "true");
     }
 
