@@ -1,0 +1,26 @@
+pipeline {
+    agent {
+        node {
+            label 'master'
+        }
+    }
+    stages {
+        stage('kill-old-hub'){
+            steps{
+                sh 'docker ps -f name=zalenium -q | xargs --no-run-if-empty docker container stop'
+                sh 'docker container ls -a -fname=zalenium -q | xargs -r docker container rm'
+            }
+        }
+        stage('pull-hub'){
+            steps {
+                sh 'docker pull elgalu/selenium'
+                sh 'docker pull dosel/zalenium'
+            }
+        }
+        stage('run-hub') {
+            steps {
+                sh 'docker run -d --rm --name zalenium -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock dosel/zalenium start'
+            }
+        }
+    }
+}
