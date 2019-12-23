@@ -140,4 +140,12 @@ public class WebDriverEventAdapter implements WebDriverEventListener {
         
     }
 
+    @Override
+    public void beforeGetText(WebElement we, WebDriver wd) {
+    }
+
+    @Override
+    public void afterGetText(WebElement we, WebDriver wd, String string) {
+    }
+
 }

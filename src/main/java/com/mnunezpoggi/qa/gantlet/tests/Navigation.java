@@ -26,7 +26,6 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.testng.annotations.Test;
 import com.mnunezpoggi.qa.gantlet.annotations.PageNavigator;
 import com.mnunezpoggi.qa.gantlet.annotations.TestableElement;
-import com.gargoylesoftware.htmlunit.javascript.configuration.WebBrowser;
 import org.openqa.selenium.WebElement;
 
 /**
