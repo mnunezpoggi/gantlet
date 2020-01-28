@@ -24,6 +24,9 @@ public class ChromeDriverFactory extends DriverFactory {
             + "{credentials_enable_service: false,"
             + " profile.password_manager_enabled: false}"
             + "}";
+
+    private static final String HEADLESS_DRIVER_CONFIG = "{name: chrome, "
+            + "arguments : ['start-maximized','--headless','--disable-gpu','--no-sandbox','--disable-dev-shm-usage','--enable-features=NetworkService,NetworkServiceInProcess']}";
      
     public ChromeDriverFactory() {
         if(DRIVER_DIR != null && !DRIVER_DIR.isEmpty()){
@@ -39,10 +42,11 @@ public class ChromeDriverFactory extends DriverFactory {
 
     @Override
     public WebDriver createDriver(String Json) {
+        String conf = HEADLESS ? HEADLESS_DRIVER_CONFIG : DEFAULT_DRIVER_CONFIG;
         if (isJson(Json)) {
             return createDriverFromJson(Json);
         } else {
-            return createDriverFromJson(DEFAULT_DRIVER_CONFIG);
+            return createDriverFromJson(conf);
         }
     }
 

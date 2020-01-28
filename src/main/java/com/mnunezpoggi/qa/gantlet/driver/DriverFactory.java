@@ -15,12 +15,14 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  */
 public abstract class DriverFactory extends JsonHandler{
     
-    private static final String DRIVER_DIR_VAR = "driver_dir";
-    
-    private static final ConfigurationHolder config = ConfigurationHolder.getInstance();
+    protected static final ConfigurationHolder config = ConfigurationHolder.getInstance();
+
+    protected static final String DRIVER_DIR_VAR = "driver_dir";
+
+    protected static final boolean HEADLESS = config.get("headless") != null;
     
     protected static String DRIVER_DIR = config.get(DRIVER_DIR_VAR);
-    
+
     public abstract String getName();
        
     public abstract WebDriver createDriver(String Json);
